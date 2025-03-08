@@ -6,20 +6,38 @@
 /*   By: jmehmy <jmehmy@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 11:48:50 by jmehmy            #+#    #+#             */
-/*   Updated: 2025/03/07 22:05:39 by jmehmy           ###   ########.fr       */
+/*   Updated: 2025/03/08 09:21:47 by jmehmy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
+void	handle_files(t_pipex *pipex, char *argv[])
+{
+	pipex->infile = open(argv[1], O_RDONLY);
+	if (pipex->infile < 0)
+	{
+		perror("Problems with file");
+		pipex->infile = open("/dev/null", O_RDONLY);
+		if (pipex->infile < 0)
+			print_error(ERR_W);
+	}
+	pipex->outfile = open(argv[4], O_CREAT | O_WRONLY | O_TRUNC, 0644);
+	if (pipex->outfile < 0)
+	{
+		close(pipex->infile);
+		print_error(ERR_FILE);
+	}
+}
+
 void	ft_pipex(t_pipex *pipex, int *fd, char *argv[], const char *envp[])
 {
 	handle_files(pipex, argv);
 	if (pipe(fd) == -1)
-		perror("Something went wrong"), exit(1);
+		print_error(ERR_W);
 	pipex->pid1 = fork();
 	if (pipex->pid1 < 0)
-		perror("Fork failed 1st child"), exit(1);
+		print_error(ERR_W);
 	else if (pipex->pid1 == 0)
 	{
 		close(fd[0]);
@@ -28,7 +46,7 @@ void	ft_pipex(t_pipex *pipex, int *fd, char *argv[], const char *envp[])
 	}
 	pipex->pid2 = fork();
 	if (pipex->pid2 < 0)
-		perror("Fork failed 2nd child"), exit(1);
+		print_error(ERR_W);
 	else if (pipex->pid2 == 0)
 	{
 		close(fd[1]);
@@ -87,7 +105,6 @@ int	main(int argc, char *argv[], const char *envp[])
 	int		fd[2];
 	t_pipex	pipex;
 
-	
 	if (argc == 5)
 	{
 		if (pipe(fd) == -1)

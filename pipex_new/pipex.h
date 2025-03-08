@@ -6,7 +6,7 @@
 /*   By: jmehmy <jmehmy@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 11:50:35 by jmehmy            #+#    #+#             */
-/*   Updated: 2025/03/07 22:01:18 by jmehmy           ###   ########.fr       */
+/*   Updated: 2025/03/08 09:21:08 by jmehmy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include "sys/wait.h"
 # include "unistd.h"
 
-# define ERR_ARG "Wrong amount of arg"
 # define ERR_FILE "Problems with file"
 # define ERR_C "Problems with commands"
 # define ERR_W "Something went wrong"
@@ -41,9 +40,10 @@ void		input_processor(t_pipex *pipex, char *comm_input,
 void		output_processor(t_pipex *pipex, char *comm_input,
 				const char *envp[], int *fd);
 void		find_path(t_pipex *pipex, char **commands, const char *envp[]);
+void		split_path(t_pipex *pipex, char **commands, const char *envp[]);
 void		print_error(char *str);
 void		cleanup_pipex(t_pipex *pipex, char **commands);
-void    	handle_files(t_pipex *pipex, char *argv[]);
+void		handle_files(t_pipex *pipex, char *argv[]);
 void		close_and_wait(t_pipex *pipex, int *fd);
 
 #endif
