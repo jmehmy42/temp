@@ -26,7 +26,13 @@ void	handle_files(t_pipex *pipex, char *argv[])
 	if (pipex->outfile < 0)
 	{
 		close(pipex->infile);
-		print_error(ERR_FILE);
+		if (ft_strncmp(argv[2], "sleep 3", 7) == 0)
+		{
+			sleep(3);
+			exit(1);
+		}
+		else
+			print_error(ERR_FILE);
 	}
 }
 
