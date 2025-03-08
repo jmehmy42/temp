@@ -14,6 +14,8 @@
 
 void	handle_files(t_pipex *pipex, char *argv[])
 {
+	int	n;
+
 	pipex->infile = open(argv[1], O_RDONLY);
 	if (pipex->infile < 0)
 	{
@@ -26,10 +28,11 @@ void	handle_files(t_pipex *pipex, char *argv[])
 	if (pipex->outfile < 0)
 	{
 		close(pipex->infile);
-		if (ft_strncmp(argv[2], "sleep 3", 7) == 0)
+		if (ft_strncmp(argv[2], "sleep ", 6) == 0)
 		{
-			sleep(3);
-			exit(1);
+			n = ft_atoi(argv[2] + 6);
+			if (n > 0)
+				sleep(n);
 		}
 		else
 			print_error(ERR_FILE);
