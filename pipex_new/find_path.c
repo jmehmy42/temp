@@ -40,7 +40,7 @@ void	split_path(t_pipex *pipex, char **commands, const char *envp[])
 
 	pipex->paths = ft_split(pipex->path, ':');
 	if (!pipex->paths)
-		exit_command(pipex, commands);
+		clean_and_exit(pipex, commands);
 	i = 0;
 	while (pipex->paths[i] != NULL)
 	{
@@ -51,5 +51,5 @@ void	split_path(t_pipex *pipex, char **commands, const char *envp[])
 		free(full_path);
 		i++;
 	}
-	exit_command(pipex, commands);
+	clean_and_exit(pipex, commands);
 }
