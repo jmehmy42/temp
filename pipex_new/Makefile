@@ -14,7 +14,7 @@ NAME = pipex
 CC = cc
 FLAGS = -Wall -Werror -Wextra
 
-SRC_FILES = pipex.c find_path.c
+SRC_FILES = pipex.c find_path.c utils.c
 OBJ_DIR = obj
 OBJS = $(patsubst %.c, $(OBJ_DIR)/%.o, $(SRC_FILES))
 
@@ -24,6 +24,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
 	@$(CC) $(FLAGS) $(OBJS) $(LIBFT) -g -o $(NAME)
+	@echo "\n\033[32mPipex Compiled Successfully! ᕦ(\033[31m♥\033[32m_\033[31m♥\033[32m)ᕤ\n"
 
 $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
 	@$(CC) $(FLAGS) -c -g $< -o $@
@@ -41,6 +42,7 @@ clean:
 fclean: clean
 	@rm -f $(NAME)
 	@make fclean -C libft -s
+	@echo "\n\033[31mDeleting EVERYTHING! ⌐(ಠ۾ಠ)¬\n"
 
 re: fclean all
 

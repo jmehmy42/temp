@@ -6,7 +6,7 @@
 /*   By: jmehmy <jmehmy@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 11:48:50 by jmehmy            #+#    #+#             */
-/*   Updated: 2025/03/08 09:21:47 by jmehmy           ###   ########.fr       */
+/*   Updated: 2025/03/10 19:08:51 by jmehmy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,6 @@ int	main(int argc, char *argv[], const char *envp[])
 		ft_pipex(&pipex, fd, argv, envp);
 	}
 	else
-		perror("Wrong amount of arg");
+		ft_putstr_fd("Wrong number of arguments", 2);
 	return (0);
 }

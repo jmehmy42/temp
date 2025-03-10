@@ -12,6 +12,8 @@
 
 #ifndef LIBFT_H
 # define LIBFT_H
+
+# include "ft_printf/ft_printf.h" 
 # include <fcntl.h>
 # include <limits.h>
 # include <stdint.h>

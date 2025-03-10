@@ -6,7 +6,7 @@
 /*   By: jmehmy <jmehmy@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 11:50:35 by jmehmy            #+#    #+#             */
-/*   Updated: 2025/03/08 09:21:08 by jmehmy           ###   ########.fr       */
+/*   Updated: 2025/03/10 18:58:11 by jmehmy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,10 @@ void		output_processor(t_pipex *pipex, char *comm_input,
 void		find_path(t_pipex *pipex, char **commands, const char *envp[]);
 void		split_path(t_pipex *pipex, char **commands, const char *envp[]);
 void		print_error(char *str);
-void		cleanup_pipex(t_pipex *pipex, char **commands);
 void		handle_files(t_pipex *pipex, char *argv[]);
+void		execute_command_if_valid(t_pipex *pipex, char **commands,
+				const char *envp[], char *full_path);
+void		cleanup_pipex(t_pipex *pipex, char **commands);
 void		close_and_wait(t_pipex *pipex, int *fd);
-
+void	exit_command(t_pipex *pipex, char **commands);
 #endif
