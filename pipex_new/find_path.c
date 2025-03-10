@@ -6,7 +6,7 @@
 /*   By: jmehmy <jmehmy@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 13:54:13 by jmehmy            #+#    #+#             */
-/*   Updated: 2025/03/10 18:58:02 by jmehmy           ###   ########.fr       */
+/*   Updated: 2025/03/10 20:01:17 by jmehmy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	find_path(t_pipex *pipex, char **commands, const char *envp[])
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	pipex->path = NULL;
@@ -23,7 +23,7 @@ void	find_path(t_pipex *pipex, char **commands, const char *envp[])
 		if (ft_strncmp(envp[i], "PATH=", 5) == 0)
 		{
 			pipex->path = ft_strdup(&envp[i][5]);
-			break;
+			break ;
 		}
 		i++;
 	}
