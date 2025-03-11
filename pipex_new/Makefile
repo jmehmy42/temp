@@ -24,7 +24,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
 	@$(CC) $(FLAGS) $(OBJS) $(LIBFT) -g -o $(NAME)
-	@echo "\n\033[32mPipex Compiled Successfully! ᕦ(\033[31m♥\033[32m_\033[31m♥\033[32m)ᕤ\n"
+	@echo "\n\033[1m\033[32mPipex Compiled Successfully! ᕦ(\033[31m♥\033[32m_\033[31m♥\033[32m)ᕤ\033[1m\\n"
 
 $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
 	@$(CC) $(FLAGS) -c -g $< -o $@
@@ -42,7 +42,7 @@ clean:
 fclean: clean
 	@rm -f $(NAME)
 	@make fclean -C libft -s
-	@echo "\n\033[31mDeleting EVERYTHING! ⌐(ಠ۾ಠ)¬\n"
+	@echo "\n\033[1m\\033[31mDeleting EVERYTHING! ⌐(ಠ۾ಠ)¬\033[1m\\n"
 
 re: fclean all
 

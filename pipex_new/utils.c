@@ -6,7 +6,7 @@
 /*   By: jmehmy <jmehmy@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 13:54:13 by jmehmy            #+#    #+#             */
-/*   Updated: 2025/03/10 20:07:18 by jmehmy           ###   ########.fr       */
+/*   Updated: 2025/03/11 17:35:01 by jmehmy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void	close_and_wait(t_pipex *pipex, int *fd)
 	close(pipex->outfile);
 	waitpid(pipex->pid1, NULL, 0);
 	waitpid(pipex->pid2, &status, 0);
-	if (WIFEXITED(status))
-		exit(WEXITSTATUS(status));
+	if (status >= 0)
+		exit(status >> 8);
 	else
 		exit(1);
 }
