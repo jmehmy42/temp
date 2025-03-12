@@ -15,6 +15,8 @@
 void	execute_command_if_valid(t_pipex *pipex, char **commands,
 	const char *envp[], char *full_path)
 {
+	close(pipex->outfile);
+	close(pipex->infile);
 	if (access(full_path, F_OK | X_OK) == 0)
 	{
 		if (execve(full_path, commands, (char *const *)envp) == -1)
