@@ -18,7 +18,7 @@ SRC_FILES = pipex.c find_path.c utils.c
 OBJ_DIR = obj
 OBJS = $(patsubst %.c, $(OBJ_DIR)/%.o, $(SRC_FILES))
 
-LIBFT = libft/libft.a
+LIBFT = includes/libft/libft.a
 
 all: $(NAME) 
 
@@ -33,15 +33,15 @@ $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
 $(LIBFT):
-	@$(MAKE) -C libft -s
+	@$(MAKE) -C includes/libft -s
 	
 clean:
 	@rm -rf $(OBJ_DIR)
-	@make clean -C libft -s
+	@make clean -C includes/libft -s
 
 fclean: clean
 	@rm -f $(NAME)
-	@make fclean -C libft -s
+	@make fclean -C includes/libft -s
 	@echo "\n\033[1m\\033[31mDeleting EVERYTHING! ⌐(ಠ۾ಠ)¬\033[1m\\n"
 
 re: fclean all
