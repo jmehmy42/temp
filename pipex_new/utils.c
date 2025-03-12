@@ -6,7 +6,7 @@
 /*   By: jmehmy <jmehmy@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 13:54:13 by jmehmy            #+#    #+#             */
-/*   Updated: 2025/03/11 17:35:01 by jmehmy           ###   ########.fr       */
+/*   Updated: 2025/03/11 22:58:52 by jmehmy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,18 +46,4 @@ void	print_error(char *str)
 {
 	perror(str);
 	exit(1);
-}
-
-void	execute_command_if_valid(t_pipex *pipex, char **commands,
-		const char *envp[], char *full_path)
-{
-	if (access(full_path, F_OK | X_OK) == 0)
-	{
-		if (execve(full_path, commands, (char *const *)envp) == -1)
-		{
-			free(full_path);
-			clean_pipex(pipex, commands);
-			print_error(ERR_W);
-		}
-	}
 }

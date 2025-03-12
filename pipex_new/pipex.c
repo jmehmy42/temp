@@ -6,7 +6,7 @@
 /*   By: jmehmy <jmehmy@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 11:48:50 by jmehmy            #+#    #+#             */
-/*   Updated: 2025/03/11 17:34:35 by jmehmy           ###   ########.fr       */
+/*   Updated: 2025/03/11 22:48:30 by jmehmy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,8 @@ int	main(int argc, char *argv[], const char *envp[])
 	}
 	else
 	{
-		ft_putstr_fd("Wrong number of arguments", 2);
+		ft_putstr_fd("Wrong number of arguments\n", 2);
+		exit(1);
 	}
 	return (0);
 }
