@@ -6,7 +6,7 @@
 /*   By: jmehmy <jmehmy@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 11:48:50 by jmehmy            #+#    #+#             */
-/*   Updated: 2025/03/12 16:20:59 by jmehmy           ###   ########.fr       */
+/*   Updated: 2025/03/13 18:19:10 by jmehmy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	input_processor(t_pipex *pipex, char *comm_input, const char *envp[],
 		print_error(ERR_FILE);
 	close(pipex->infile);
 	close(fd[1]);
-	commands = ft_split(comm_input, ' ');
+	commands = ft_arg_split(comm_input, ' ');
 	if (!commands || !commands[0])
 	{
 		free_string(commands);
@@ -44,7 +44,7 @@ void	output_processor(t_pipex *pipex, char *comm_input, const char *envp[],
 		print_error(ERR_FILE);
 	close(pipex->outfile);
 	close(fd[0]);
-	commands = ft_split(comm_input, ' ');
+	commands = ft_arg_split(comm_input, ' ');
 	if (!commands || !commands[0])
 	{
 		free_string(commands);
@@ -61,7 +61,7 @@ void	handle_files(t_pipex *pipex, char *argv[])
 	pipex->infile = open(argv[1], O_RDONLY);
 	if (pipex->infile < 0)
 	{
-		perror("Problems with file");
+		perror("Problems with files");
 		pipex->infile = open("/dev/null", O_RDONLY);
 		if (pipex->infile < 0)
 			print_error(ERR_W);

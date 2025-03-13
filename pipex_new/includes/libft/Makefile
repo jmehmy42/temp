@@ -22,7 +22,7 @@ SRC_FILES       = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
               ft_strdup.c ft_striteri.c ft_strjoin.c ft_strlcat.c ft_strlen.c \
               ft_strmapi.c ft_strncmp.c ft_strnstr.c ft_strrchr.c ft_strtrim.c \
               ft_substr.c ft_tolower.c ft_toupper.c ft_strlcpy.c free_string.c \
-              get_next_line.c get_next_line_utils.c get_next_line_bonus.c get_next_line_utils_bonus.c \
+              get_next_line.c get_next_line_utils.c get_next_line_bonus.c get_next_line_utils_bonus.c ft_arg_split.c \
 
 PRINTF          = ft_printf.c ft_pointer.c ft_print_string.c ft_print_char.c \
 		ft_unsigned.c ft_putnbr.c ft_hexadacimal.c ft_hex_conversion.c

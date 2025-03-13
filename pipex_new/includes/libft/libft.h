@@ -6,7 +6,7 @@
 /*   By: jmehmy <jmehmy@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 20:31:13 by jmehmy            #+#    #+#             */
-/*   Updated: 2025/03/12 14:11:20 by jmehmy           ###   ########.fr       */
+/*   Updated: 2025/03/13 14:27:11 by jmehmy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,5 @@ t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 t_list				*ft_lstnew(void *content);
 int					ft_lstsize(t_list *lst);
 void				free_string(char **str);
+char				**ft_arg_split(const char *s, char c);
 #endif
