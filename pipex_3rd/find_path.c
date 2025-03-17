@@ -6,7 +6,7 @@
 /*   By: jmehmy <jmehmy@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 13:54:13 by jmehmy            #+#    #+#             */
-/*   Updated: 2025/03/16 23:49:44 by jmehmy           ###   ########.fr       */
+/*   Updated: 2025/03/17 14:04:38 by jmehmy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	execute_command_if_valid(t_pipex *pipex, char **commands,
 	}
 }
 
-void	find_path(t_pipex *pipex, const char *envp[])
+void	find_path(t_pipex *pipex, const char *envp[], int *fd)
 {
 	int	i;
 
@@ -42,7 +42,7 @@ void	find_path(t_pipex *pipex, const char *envp[])
 	{
 		pipex->path = ft_strdup("/usr/bin:/bin:/usr/sbin:/sbin");
 		if (!pipex->path)
-			print_error(ERR_C);
+			print_error(ERR_W);
 	}
 	while (envp[i] != NULL)
 	{
@@ -57,6 +57,10 @@ void	find_path(t_pipex *pipex, const char *envp[])
 	{
 		ft_putstr_fd ("command not found\n", 2);
 		ft_putstr_fd ("command not found\n", 2);
+		close(pipex->infile);
+		close(pipex->outfile);
+		close(fd[0]);
+		close(fd[1]);
 		exit(127);
 	}
 }

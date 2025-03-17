@@ -6,7 +6,7 @@
 /*   By: jmehmy <jmehmy@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 13:54:13 by jmehmy            #+#    #+#             */
-/*   Updated: 2025/03/16 20:15:44 by jmehmy           ###   ########.fr       */
+/*   Updated: 2025/03/17 12:32:07 by jmehmy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ void	clean_pipex(t_pipex *pipex, char **commands)
 
 void	clean_and_exit(t_pipex *pipex, char **commands)
 {
-	perror("command not found");
+	perror("command lll not found");
+	close(pipex->outfile);
+	close(pipex->infile);
 	free(pipex->path);
 	clean_pipex(pipex, commands);
 	exit(127);
